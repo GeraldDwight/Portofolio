@@ -1,258 +1,179 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio — Gerald Dwight Andigha Cardinsyah</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portofolio | Gerald Dwight Andigha Cardinsyah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-portfolio">
 
-    <!-- Header & Navigation -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Gerald Dwight<span>.</span></a>
-            <nav class="nav-links" id="navLinks">
-                <a href="#about">Tentang</a>
-                <a href="#stats">Statistik</a>
-                <a href="#experience">Pengalaman</a>
-                <a href="#organization">Organisasi</a>
-                <a href="#skills">Keahlian</a>
-            </nav>
-            <div class="nav-actions">
-                <a href="index.html" class="btn-outline-small">Kembali ke Intro</a>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+<header class="nav" id="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">Gerald Dwight</a>
+    <nav id="navLinks" aria-label="Navigasi utama">
+      <a href="#proyek">Proyek</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#organisasi">Organisasi</a>
+      <a href="#keahlian">Keahlian</a>
+      <a class="only-m" href="index.html">Beranda</a>
+    </nav>
+    <a class="home" href="index.html">Beranda</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <h1>Dua website yang sudah berjalan, dan bisa Anda buka sekarang.</h1>
+      <p>Saya Gerald, lulusan Ilmu Komputer Universitas Djuanda (IPK 3.91). Saya membangun website dari database sampai tampilan, lalu mengujinya sebelum diserahkan.</p>
+    </div>
+  </section>
+
+  <section id="proyek" class="sec tint">
+    <div class="wrap">
+      <h2>Proyek</h2>
+      <p class="sub">Klik gambar atau tombol untuk membuka websitenya langsung.</p>
+
+      <article class="project reveal">
+        <a class="shot" href="https://sdrimbaputra.page.gd/?i=3" target="_blank" rel="noopener" aria-label="Buka website SD Rimba Putra">
+          <div class="frame">
+            <div class="bar">sdrimbaputra.page.gd</div>
+            <div class="screen">SD Rimba Putra
+              <img src="img/sd-rimba-putra.jpg" alt="Tampilan website SD Rimba Putra" data-fb="https://image.thum.io/get/width/1000/crop/625/https://sdrimbaputra.page.gd/">
             </div>
+          </div>
+        </a>
+        <div>
+          <h3>Sistem Informasi SD Rimba Putra</h3>
+          <p class="role">Full Stack Developer dan QA, proyek skripsi</p>
+          <p class="d">Sistem informasi sekolah berbasis web yang memusatkan data dan administrasi dalam satu tempat.</p>
+          <ul>
+            <li>Dirancang dan dibangun dari awal sampai siap pakai dengan metode Waterfall.</li>
+            <li>Database MySQL dioptimalkan agar data siswa lebih cepat diproses.</li>
+            <li>Semua fitur utama diuji dengan Black Box Testing, lalu UAT bersama pihak sekolah.</li>
+          </ul>
+          <div class="tags"><span>MySQL</span><span>Waterfall</span><span>Black Box Testing</span><span>UAT</span></div>
+          <a class="btn" href="https://sdrimbaputra.page.gd/?i=3" target="_blank" rel="noopener">Buka website</a>
         </div>
-    </header>
+      </article>
 
-    <!-- About Section -->
-    <section id="about" class="section first-section">
-        <div class="container reveal">
-            <div class="section-header">
-                <span class="section-tag">Tentang Saya</span>
-                <h2 class="section-title">Menghubungkan logika sistem backend dengan interaktivitas frontend yang optimal.</h2>
+      <article class="project reveal">
+        <a class="shot" href="https://optikdwitunggal.page.gd/?i=3" target="_blank" rel="noopener" aria-label="Buka website Optik Dwi Tunggal">
+          <div class="frame">
+            <div class="bar">optikdwitunggal.page.gd</div>
+            <div class="screen">Optik Dwi Tunggal
+              <img src="img/optik-dwi-tunggal.jpg" alt="Tampilan website Optik Dwi Tunggal" data-fb="https://image.thum.io/get/width/1000/crop/625/https://optikdwitunggal.page.gd/">
             </div>
-            <div class="about-content">
-                <p>
-                    Saya adalah seorang fresh graduate Sarjana Ilmu Komputer dari Universitas Djuanda (UNIDA) Bogor dengan minat mendalam pada pengembangan web secara menyeluruh (<em>full-stack web development</em>), berfokus pada rekayasa sistem <em>backend</em> dan implementasi <em>frontend</em> yang bersih.
-                </p>
-                <p>
-                    Perjalanan akademis dan profesional saya dibentuk melalui pengalaman nyata mulai dari perancangan sistem informasi institusi pendidikan skala besar, magang korporat di Yakes Telkom, hingga memimpin organisasi mahasiswa tingkat fakultas.
-                </p>
-            </div>
+          </div>
+        </a>
+        <div>
+          <h3>Landing Page Optik Dwi Tunggal</h3>
+          <p class="role">Web Developer, berbasis proyek</p>
+          <p class="d">Landing page untuk memperkuat kehadiran digital dan mengajak pengunjung menjadi pelanggan.</p>
+          <ul>
+            <li>Responsif, cepat dimuat, dan menarik secara visual.</li>
+            <li>Navigasi nyaman di berbagai perangkat dengan prinsip UI/UX.</li>
+            <li>Diuji lewat usability testing secara menyeluruh.</li>
+          </ul>
+          <div class="tags"><span>Landing page</span><span>Responsif</span><span>UI/UX</span><span>Usability testing</span></div>
+          <a class="btn" href="https://optikdwitunggal.page.gd/?i=3" target="_blank" rel="noopener">Buka website</a>
         </div>
-    </section>
+      </article>
+    </div>
+  </section>
 
-    <!-- Stats Section (Baru untuk Mengisi Kekosongan & Menampilkan Kredibilitas) -->
-    <section id="stats" class="stats-section">
-        <div class="container">
-            <div class="stats-grid reveal">
-                <div class="stat-card">
-                    <h3>4+</h3>
-                    <p>Proyek Sistem & Web</p>
-                </div>
-                <div class="stat-card">
-                    <h3>1</h3>
-                    <p>Magang Korporat (Yakes Telkom)</p>
-                </div>
-                <div class="stat-card">
-                    <h3>4+</h3>
-                    <p>Sertifikasi Profesional (IBM, dll)</p>
-                </div>
-                <div class="stat-card">
-                    <h3>2</h3>
-                    <p>Kepemimpinan Utama Organisasi</p>
-                </div>
-            </div>
+  <section id="pengalaman" class="sec">
+    <div class="wrap">
+      <h2>Pengalaman</h2>
+      <p class="sub">Magang dan pengabdian yang membentuk cara saya bekerja.</p>
+      <div class="row reveal">
+        <div class="when">Jun 2025<br>Bandung</div>
+        <div>
+          <h3>Administration &amp; System Design Intern</h3>
+          <p class="at">Yakes Telkom, unit Legal</p>
+          <ul>
+            <li>Mengelola dan mengentri data administrasi internal dengan teliti dan menjaga kerahasiaannya.</li>
+            <li>Merancang Entity-Relationship Diagram (ERD) untuk sistem Yakes Account Manager, dipresentasikan pada evaluasi KKL.</li>
+          </ul>
         </div>
-    </section>
-
-<!-- Experience Section -->
-    <section id="experience" class="section bg-light">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Pengalaman & Proyek</span>
-                <h2 class="section-title">Rekam jejak profesional dan pengembangan sistem.</h2>
-            </div>
-
-            <div class="timeline">
-                <!-- 1. SD Rimba Putra -->
-                <div class="timeline-item reveal">
-                    <div class="timeline-meta">
-                        <span class="period">Jun 2026 - Aug 2026</span>
-                        <span class="location">Bogor, Indonesia</span>
-                    </div>
-                    <div class="timeline-content card-box">
-                        <h3>Full Stack Developer <span class="role-sub">| Undergraduate Thesis</span></h3>
-                        <p class="company">SD Rimba Putra</p>
-                        <p class="desc">
-                            Memimpin perancangan dan pengembangan sistem informasi sekolah terpusat berbasis web menggunakan metodologi Waterfall untuk efisiensi administrasi akademik.
-                        </p>
-                        <ul>
-                            <li>Merekayasa arsitektur end-to-end dengan antarmuka responsif dan fungsionalitas manajemen data yang aman.</li>
-                            <li>Mengoptimalkan database relasional MySQL untuk pemrosesan data siswa, guru, dan laporan institusi.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 2. Yakes Telkom -->
-                <div class="timeline-item reveal">
-                    <div class="timeline-meta">
-                        <span class="period">Jul 2024</span>
-                        <span class="location">Bandung, Indonesia</span>
-                    </div>
-                    <div class="timeline-content card-box">
-                        <h3>Backend Developer Intern</h3>
-                        <p class="company">YAKES TELKOM</p>
-                        <p class="desc">
-                            Menjalani magang profesional dengan fokus pada rekayasa peladen dan manajemen basis data korporat skala enterprise.
-                        </p>
-                        <ul>
-                            <li>Merancang sistem backend yang aman dan efisien menggunakan bahasa PHP serta kerangka kerja Laravel.</li>
-                            <li>Mengelola basis data relasional guna mendukung sistem manajemen kesehatan internal perusahaan.</li>
-                        </ul>
-                    </div>
-                </div>
-
-<!-- 3. Optik Dwi Tunggal -->
-                <div class="timeline-item reveal">
-                    <div class="timeline-meta">
-                        <span class="period">Aug 2026</span>
-                        <span class="location">Bogor, Indonesia</span>
-                    </div>
-                    <div class="timeline-content card-box">
-                        <h3>Web Developer <span class="role-sub">| Project-Based</span></h3>
-                        <p class="company">Optik Dwi Tunggal</p>
-                        <p class="desc">
-                            Mengembangkan landing page profesional untuk memperkuat visibilitas digital dan penetrasi pasar bisnis komersial.
-                        </p>
-                        <ul>
-                            <li>Membangun halaman web yang sangat responsif, optimal, dan berfokus pada konversi pengguna.</li>
-                            <li>Menerapkan prinsip tata letak modern untuk memperkuat identitas digital dan interaksi audiens.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 4. KKN Kelurahan Kebon Pedes -->
-                <div class="timeline-item reveal">
-                    <div class="timeline-meta">
-                        <span class="period">Jul 2025</span>
-                        <span class="location">Bogor, Indonesia</span>
-                    </div>
-                    <div class="timeline-content card-box">
-                        <h3>Technology Integration Developer <span class="role-sub">| KKN</span></h3>
-                        <p class="company">Kelurahan Kebon Pedes</p>
-                        <p class="desc">
-                            Mengabdikan keahlian teknologi untuk memberdayakan infrastruktur dan efisiensi masyarakat lokal melalui program Kuliah Kerja Nyata.
-                        </p>
-                        <ul>
-                            <li>Merancang dan mengimplementasikan solusi berbasis teknologi tepat guna untuk fasilitas warga setempat.</li>
-                            <li>Menyusun dokumentasi program kerja terstruktur serta laporan mingguan kegiatan secara kolaboratif dalam tim.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="row reveal">
+        <div class="when">Jul 2025 sampai Agu 2025<br>Bogor</div>
+        <div>
+          <h3>Technology Integration Developer</h3>
+          <p class="at">KKN Kelurahan Kebon Pedes</p>
+          <ul>
+            <li>Merancang dan menerapkan solusi teknologi sesuai kebutuhan infrastruktur warga.</li>
+            <li>Mengoordinasikan kegiatan lintas disiplin dan menyusun laporan berkala tepat waktu.</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Organization Section -->
-    <section id="organization" class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Kepemimpinan</span>
-                <h2 class="section-title">Pengalaman berorganisasi dan memimpin tim.</h2>
-            </div>
-
-            <div class="org-grid">
-                <div class="org-card reveal">
-                    <span class="org-period">May 2024 - Jun 2025</span>
-                    <h3>Wakil Ketua</h3>
-                    <p class="org-place">Dewan Perwakilan Mahasiswa (DPM) Fasilkom UNIDA</p>
-                    <p class="org-desc">Mengarahkan fungsi legislasi, pengawasan, serta advokasi aspirasi mahasiswa tingkat fakultas dan menjembatani komunikasi dengan birokrat.</p>
-                </div>
-
-                <div class="org-card reveal">
-                    <span class="org-period">Jun 2024 - Jun 2025</span>
-                    <h3>Ketua</h3>
-                    <p class="org-place">UKM Bola Voli (IVODA) UNIDA</p>
-                    <p class="org-desc">Memimpin operasional organisasi, program pelatihan atletik, manajemen logistik, dan pengelolaan acara strategis.</p>
-                </div>
-            </div>
+  <section id="organisasi" class="sec tint">
+    <div class="wrap">
+      <h2>Organisasi</h2>
+      <p class="sub">Belajar memimpin dan mendengar sebelum memutuskan.</p>
+      <div class="row reveal">
+        <div class="when">Mei 2024 sampai Jun 2025</div>
+        <div>
+          <h3>Wakil Ketua</h3>
+          <p class="at">Dewan Perwakilan Mahasiswa (DPM) Filkom</p>
+          <ul><li>Mengarahkan fungsi legislatif, pengawasan, dan advokasi, serta memfasilitasi aspirasi akademik mahasiswa kepada pimpinan fakultas.</li></ul>
         </div>
-    </section>
-
-    <!-- Skills & Certifications Section (Diperkaya dengan Grid Kartu Teknologi) -->
-    <section id="skills" class="section bg-light">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Keahlian Teknis</span>
-                <h2 class="section-title">Tech Stack & Kredensial Profesional</h2>
-            </div>
-
-            <div class="skills-grid-container reveal">
-                <div class="tech-card">
-                    <h4>Backend & Database</h4>
-                    <div class="tech-tags">
-                        <span>PHP / Laravel</span>
-                        <span>Java & Spring Boot</span>
-                        <span>MySQL</span>
-                        <span>Firestore</span>
-                        <span>RESTful APIs</span>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <h4>Frontend & Design</h4>
-                    <div class="tech-tags">
-                        <span>HTML5 / CSS3</span>
-                        <span>JavaScript</span>
-                        <span>Figma</span>
-                        <span>Adobe Illustrator</span>
-                        <span>Canva</span>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <h4>Tools & Methodologies</h4>
-                    <div class="tech-tags">
-                        <span>Git / GitHub</span>
-                        <span>Waterfall Model</span>
-                        <span>VS Code</span>
-                        <span>Postman</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="certs-box reveal" style="margin-top: 50px;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;">Sertifikasi & Lisensi Resmi</h3>
-                <ul class="cert-list">
-                    <li>Code Generation and Optimization Using IBM Granite — IBM SkillsBuild</li>
-                    <li>SQL for Data Science</li>
-                    <li>C++ for C Programmers, Part A</li>
-                    <li>Project Management Basics & Financial Literacy 101</li>
-                </ul>
-            </div>
+      </div>
+      <div class="row reveal">
+        <div class="when">Jun 2024 sampai Jun 2025</div>
+        <div>
+          <h3>Ketua</h3>
+          <p class="at">UKM Voli Universitas Djuanda (IVODA)</p>
+          <ul><li>Mengelola sumber daya dan program kerja, serta memimpin tim dalam berbagai kegiatan olahraga universitas.</li></ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <p>© <span id="currentYear">2026</span> Gerald Dwight Andigha Cardinsyah. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="mailto:geralddwight2003@gmail.com">Email</a>
-                <a href="https://linkedin.com/in/geralddwight" target="_blank">LinkedIn</a>
-                <a href="tel:08998655334">WhatsApp</a>
-            </div>
-        </div>
-    </footer>
+  <section id="keahlian" class="sec">
+    <div class="wrap">
+      <h2>Keahlian</h2>
+      <p class="sub">Yang saya pakai sehari-hari.</p>
+      <div class="skills">
+        <div><h3>Pengembangan web</h3><div class="chips"><span>PHP</span><span>Laravel</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>REST API</span><span>MVC</span></div></div>
+        <div><h3>Database</h3><div class="chips"><span>MySQL</span><span>Desain database relasional</span><span>Optimasi query</span><span>ERD</span></div></div>
+        <div><h3>Pengujian</h3><div class="chips"><span>Black Box Testing</span><span>UAT</span><span>Manual testing</span><span>Functional testing</span><span>Bug tracking</span></div></div>
+        <div><h3>Desain</h3><div class="chips"><span>Figma</span><span>Canva</span><span>Adobe Illustrator</span></div></div>
+      </div>
+      <div class="certs">
+        <h3>Sertifikasi dan prestasi</h3>
+        <ul>
+          <li>Code Generation and Optimization Using IBM Granite, IBM SkillsBuild</li>
+          <li>SQL untuk Ilmu Data, Coursera</li>
+          <li>C++ untuk Pemrogram C, Bagian A, Coursera</li>
+          <li>Project Management Basics dan Financial Literacy 101</li>
+          <li>Gold Medal NFF (National Folklore Festival) 2025, lomba paduan suara kategori umum</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <script src="script.js"></script>
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="currentYear">2026</span> Gerald Dwight Andigha Cardinsyah</span>
+    <span>
+      <a href="mailto:geralddwight2003@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/geralddwight" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://wa.me/628998655334" target="_blank" rel="noopener">WhatsApp</a>
+    </span>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
