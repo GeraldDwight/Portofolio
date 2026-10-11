@@ -1,69 +1,137 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.documentElement;
-  root.classList.add('js');
+    const themePage = document.querySelector('.landing-body, .portfolio-body');
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = themeToggle?.querySelector('.theme-label');
 
-  const header = document.getElementById('navbar');
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
+    if (themePage && themeToggle && themeLabel) {
+        const setTheme = (isNight) => {
+            themePage.classList.toggle('is-night', isNight);
+            themeToggle.setAttribute('aria-pressed', String(isNight));
+            themeToggle.setAttribute('aria-label', isNight ? 'Aktifkan tema terang' : 'Aktifkan tema gelap');
+            themeLabel.textContent = isNight ? 'Mode terang' : 'Mode malam';
+        };
 
-  // Menu mobile
-  const setMenu = (open) => {
-    if (!menuToggle || !navLinks) return;
-    navLinks.classList.toggle('active', open);
-    menuToggle.classList.toggle('open', open);
-    menuToggle.setAttribute('aria-expanded', String(open));
-  };
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-    document.addEventListener('click', e => { if (!header.contains(e.target)) setMenu(false); });
-  }
+        setTheme(localStorage.getItem('landing-theme') === 'night');
+        themeToggle.addEventListener('click', () => {
+            const isNight = !themePage.classList.contains('is-night');
+            setTheme(isNight);
+            localStorage.setItem('landing-theme', isNight ? 'night' : 'day');
+        });
+    }
 
-  // Bayangan tipis pada navbar saat halaman digulir
-  const onScroll = () => header && header.classList.toggle('scrolled', window.scrollY > 8);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+    const localTime = document.getElementById('localTime');
+    if (localTime) {
+        const updateLocalTime = () => {
+            localTime.textContent = new Intl.DateTimeFormat('id-ID', {
+                timeZone: 'Asia/Jakarta',
+                hour: '2-digit',
+                minute: '2-digit',
+                hourCycle: 'h23'
+            }).format(new Date());
+        };
 
-  // Tandai menu sesuai bagian yang sedang dibaca
-  if (navLinks && 'IntersectionObserver' in window) {
-    const links = [...navLinks.querySelectorAll('a[href^="#"]')];
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        links.forEach(a => a.classList.toggle('current', a.getAttribute('href') === '#' + entry.target.id));
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    links.forEach(a => {
-      const sec = document.querySelector(a.getAttribute('href'));
-      if (sec) spy.observe(sec);
+        updateLocalTime();
+        window.setInterval(updateLocalTime, 60000);
+    }
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+        const setMenuOpen = (isOpen) => {
+            navLinks.classList.toggle('active', isOpen);
+            menuToggle.classList.toggle('open', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
+        };
+
+        menuToggle.addEventListener('click', () => setMenuOpen(!navLinks.classList.contains('active')));
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => setMenuOpen(false));
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') setMenuOpen(false);
+        });
+    }
+
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(element => revealObserver.observe(element));
+    } else {
+        revealElements.forEach(element => element.classList.add('active'));
+    }
+
+    document.querySelectorAll('.preview-screen img').forEach(image => {
+        const useFallback = () => {
+            const fallback = image.dataset.fallback;
+            if (fallback && !image.dataset.fallbackAttempted) {
+                image.dataset.fallbackAttempted = 'true';
+                image.src = fallback;
+                return;
+            }
+
+            image.closest('.preview-screen')?.classList.add('is-unavailable');
+            image.hidden = true;
+        };
+
+        image.addEventListener('error', useFallback);
+        if (image.complete && image.naturalWidth === 0) useFallback();
     });
-  }
 
-  // Munculkan proyek dan baris pengalaman perlahan saat digulir
-  const items = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    items.forEach(el => io.observe(el));
-  } else {
-    items.forEach(el => el.classList.add('in'));
-  }
+    const readingProgress = document.getElementById('readingProgress');
+    const backToTop = document.getElementById('backToTop');
+    let scrollUpdateQueued = false;
 
-  // Gambar proyek: coba file lokal, lalu tangkapan layar otomatis, terakhir tampilkan nama proyek
-  document.querySelectorAll('img[data-fb]').forEach(img => {
-    const next = () => {
-      if (!img.dataset.t) { img.dataset.t = '1'; img.src = img.dataset.fb; }
-      else { img.remove(); }
+    const updateScrollFeatures = () => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+
+        if (readingProgress) readingProgress.style.width = `${Math.min(progress, 100)}%`;
+        if (backToTop) backToTop.classList.toggle('is-visible', window.scrollY > 420);
+        scrollUpdateQueued = false;
     };
-    img.addEventListener('error', next);
-    if (img.complete && img.naturalWidth === 0) next();
-  });
 
-  // Tahun otomatis di footer
-  const year = document.getElementById('currentYear');
-  if (year) year.textContent = new Date().getFullYear();
+    window.addEventListener('scroll', () => {
+        if (!scrollUpdateQueued) {
+            window.requestAnimationFrame(updateScrollFeatures);
+            scrollUpdateQueued = true;
+        }
+    }, { passive: true });
+    updateScrollFeatures();
+
+    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const sectionLinks = [...document.querySelectorAll('.portfolio-nav a[href^="#"]')];
+    if (sectionLinks.length && 'IntersectionObserver' in window) {
+        const sections = sectionLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                sectionLinks.forEach(link => {
+                    const isCurrent = link.getAttribute('href') === `#${entry.target.id}`;
+                    link.classList.toggle('is-current', isCurrent);
+                    if (isCurrent) link.setAttribute('aria-current', 'location');
+                    else link.removeAttribute('aria-current');
+                });
+            });
+        }, { rootMargin: '-25% 0px -65% 0px' });
+
+        sections.forEach(section => sectionObserver.observe(section));
+    }
+
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });
